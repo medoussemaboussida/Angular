@@ -7,6 +7,7 @@ import { TestComponent } from './test/test.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddProductReactifComponent } from './add-product-reactif/add-product-reactif.component';
 
 //ce fichier a été généré lors de la création du projet en répondant par
 //yes à la première question.
@@ -21,6 +22,8 @@ const routes: Routes = [
   {path:"", redirectTo:"home", pathMatch:"full"},
   {path:"test", component:TestComponent},
   {path:"add", component:AddProductComponent},
+  {path:"add2", component:AddProductReactifComponent},
+
   //pathParam
   {path:"details/:id", component:ProductsCategoryComponent},
   //QueryParam

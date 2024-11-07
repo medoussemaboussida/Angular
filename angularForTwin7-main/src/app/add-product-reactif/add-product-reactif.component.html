@@ -1,0 +1,32 @@
+<form [formGroup]="myForm" (ngSubmit)="save()">
+    <label for="name">Name:</label>
+    <input formControlName="name" type="text" /> <br>
+    <div *ngIf="myForm.get('name').errors?.['required']">name obligatoire !</div>
+    <div *ngIf="myForm.get('name').errors?.['minlength']">minimum 5 !</div>
+    <div *ngIf="myForm.get('name').errors?.['invalidName']">Name can only contain letters.</div>
+        <label for="description">Description:</label>
+    <textarea id="description" formControlName="description" ></textarea> <br>
+    <div *ngIf="myForm.get('description').errors?.['required']">description obligatoire !</div><br>
+
+    <label for="price">Price:</label>
+    <input  formControlName="price"  /> <br>
+    <div *ngIf="myForm.get('price').errors?.['required']">price obligatoire !</div>
+    <div *ngIf="myForm.get('price').errors?.['invalidPrice']">Price must be a valid number .</div>
+
+    <br>
+    <label for="categoryId">categoryId:</label>
+    <input formControlName="categoryId" type="text" /> <br>
+    <div *ngIf="myForm.get('categoryId').errors?.['required']">category obligatoire !</div>
+
+    <br>
+    <label for="image">Image URL:</label>
+    <input id="image" formControlName="image" type="text" /> <br>
+    <div *ngIf="myForm.get('image').errors?.['required']">Image URL is required!</div>
+
+    <br>
+    <label for="promotion">Promotion (0-100):</label>
+    <input id="promotion" formControlName="promotion" type="text" /> <br>
+    <div *ngIf="myForm.get('promotion').errors?.['required']">Promotion is required!</div>
+    <div *ngIf="myForm.get('promotion').errors?.['invalidPromotion']">Promotion must be a number between 0 and 99.</div>
+    <button type="submit" [disabled]="myForm.invalid">Save</button>
+</form>
