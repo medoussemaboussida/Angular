@@ -3,7 +3,7 @@
   <div class="row">
     <div *ngFor ="let category of categories"  class="col-md-4" style="margin-bottom: 20px;">
     <ng-container *ngIf="!titre || category.title.toLowerCase().includes(titre.toLowerCase())">
-      <app-card (notified)="f($event)"
+      <app-card (add)="addToShortList(category)"  (notified)="f($event)"
         [id]="category.id" 
         [image]="category.image" 
         [title]="category.title" 

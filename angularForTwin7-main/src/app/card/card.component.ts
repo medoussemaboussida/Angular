@@ -1,4 +1,5 @@
 import { Component,EventEmitter,Input, Output } from '@angular/core';
+import { shortList } from '../models/shortList';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -19,9 +20,18 @@ export class CardComponent {
   clickImage(description:string){
     alert (description);
   }
-@Output()  notified = new EventEmitter <string>();
+@Output()  notified = new EventEmitter <any>();
+@Output()  add = new EventEmitter <any>();
+
+
   notif()
   {
-    this.notified.emit('success waw');
+    this.notified.emit({'code':202,'id':this.id});
+  }
+
+  //emetteur 
+  addToShortList()
+  {
+    this.add.emit();
   }
 }

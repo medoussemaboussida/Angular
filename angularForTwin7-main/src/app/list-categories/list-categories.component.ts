@@ -1,3 +1,4 @@
+import { shortList } from '../models/shortList';
 import { Category } from './../models/category';
 import { Component } from '@angular/core';
 
@@ -35,6 +36,30 @@ export class ListCategoriesComponent {
   clickImage(description:string){
     alert (description);
   }
-  f(msg:string)
-  {console.log("btn clicked " +msg)}
+  f(msg:any)
+  {console.log("btn clicked " +msg.code + " "+msg.id)}
+
+  //recepteur
+//on va cliquer dans fils et notifier le parent pour ajouter le type categorie au shortlist
+shortList: shortList[]=[];
+addToShortList(x:Category) 
+{
+  let exist : boolean =false;
+  let elt:shortList={'id':1,'idElement':x.id,'idUser':1,'typeElement':'Category'}
+  for(let a of this.shortList)
+  {
+    if(a.idUser==1 && a.idElement== x.id && a.typeElement=='Category')
+    {
+      exist=true;
+      alert("exist");
+    }
+ 
+  }
+  if(!exist)
+    {
+       this.shortList.push(elt);
+    }
+  console.log(this.shortList);
+}  
+
 }

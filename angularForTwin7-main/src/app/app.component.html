@@ -1,4 +1,5 @@
-<app-header></app-header>
+<app-header #h></app-header> <!--header est le composant fils par rapport app component  et h variable reference de template-->
+isAdmin : {{h.isAdmin}}
 <!---où charger la vue du composant -->
 <router-outlet></router-outlet>
 <app-footer></app-footer>
