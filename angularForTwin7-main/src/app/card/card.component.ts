@@ -1,10 +1,12 @@
 import { Component,EventEmitter,Input, Output } from '@angular/core';
-import { shortList } from '../models/shortList';
+import { shortList } from '../models/shortlist';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
+
 export class CardComponent {
   titre : string = "";
   @Input() id!: number;

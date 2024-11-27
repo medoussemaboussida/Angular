@@ -1,6 +1,6 @@
 import { CardComponent } from '../card/card.component';
 import { CategroyService } from '../core/service/categroy.service';
-import { shortList } from '../models/shortList';
+import { shortList } from '../models/shortlist';
 import { Category } from './../models/category';
 import { AfterViewInit, Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 @Component({
@@ -17,7 +17,8 @@ export class ListCategoriesComponent implements AfterViewInit,OnInit{
   constructor(private cs:CategroyService){}
   ngOnInit()
   {
-    this.categories=this.cs.getListCategories();
+    //this.categories=this.cs.getListCategories();
+    this.cs.getListCategoriesFormBackend().subscribe((res)=>this.categories=res);
   }
 
   @ViewChildren(CardComponent) children: QueryList<CardComponent>;

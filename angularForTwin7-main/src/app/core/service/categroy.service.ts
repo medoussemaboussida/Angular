@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Category } from 'src/app/models/category';
 
 @Injectable({
@@ -6,7 +8,9 @@ import { Category } from 'src/app/models/category';
 })
 export class CategroyService {
 
-  constructor() { }
+  constructor(private http:HttpClient) {
+
+   }
 
   getListCategories() : Category[]
   {
@@ -33,8 +37,8 @@ export class CategroyService {
 
   }
 
-  getListCategoriesFormBackend()
+  getListCategoriesFormBackend(): Observable<Category[]>
   {
-    
+   return this.http.get<Category[]>("http://localhost:3000/categories");
   }
 }
