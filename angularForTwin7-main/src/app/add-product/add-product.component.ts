@@ -1,3 +1,4 @@
+import { CategroyService } from '../core/service/categroy.service';
 import { Product } from './../models/product';
 import { Component } from '@angular/core';
 
@@ -9,9 +10,12 @@ import { Component } from '@angular/core';
 export class AddProductComponent {
 
   p:Product = new Product();
-
+  //service 
+  constructor(private cs:CategroyService){}
   add(myForm){
    console.log(this.p);
    console.log(myForm);
+   //service
+   this.cs.addProduct(this.p).subscribe();
   }
 }

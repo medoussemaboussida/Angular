@@ -9,7 +9,7 @@ import { Product } from 'src/app/models/product';
 })
 export class CategroyService {
   apiUrlCat : String ="http://localhost:3000/categories";
-
+  
   constructor(private http:HttpClient) {
 
    }
@@ -49,7 +49,7 @@ export class CategroyService {
     return this.http.get<Category>(this.apiUrlCat+"/"+id);
 
   }
-  apiUrlProd : String ="http://localhost:3000/products";
+  apiUrlProd : any ="http://localhost:3000/products";
 
   getListProduit(): Product[]
   {
@@ -66,5 +66,10 @@ export class CategroyService {
   getListProductsFormBackend(id:number): Observable<Product[]>
   {
    return this.http.get<Product[]>(this.apiUrlProd+"?categoryId="+id);
+  }
+
+  addProduct(product:Product): Observable<Product>
+  {
+   return this.http.post<Product>(this.apiUrlProd,product);
   }
 }
