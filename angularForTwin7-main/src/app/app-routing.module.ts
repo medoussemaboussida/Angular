@@ -17,7 +17,7 @@ const routes: Routes = [
 
   {path:"home", component:HomeComponent, children:
   [
-    {path:"getdetails", component:DetailsCategoryComponent}
+    {path:"getdetails/:id", component:DetailsCategoryComponent}
   ]},
 
   {path:"", redirectTo:"home", pathMatch:"full"},
@@ -25,6 +25,7 @@ const routes: Routes = [
   {path:"add", component:AddProductComponent},
   {path:"add2", component:AddProductReactifComponent},
   {path:"card", component:CardComponent},
+  {path:"getdetails/:id", component:DetailsCategoryComponent},
 
   //pathParam
   {path:"details/:id", component:ProductsCategoryComponent},

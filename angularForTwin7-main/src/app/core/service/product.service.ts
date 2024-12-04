@@ -10,6 +10,7 @@ export class ProductService {
 
   constructor(private http:HttpClient) { }
 
+  apiUrlProd : String ="http://localhost:3000/products";
 
   getListProduit(): Product[]
   {
@@ -23,8 +24,8 @@ export class ProductService {
     ];
   }
 
-  getListProductsFormBackend(): Observable<Product[]>
+  getListProductsFormBackend(id:number): Observable<Product[]>
   {
-   return this.http.get<Product[]>("http://localhost:3000/products");
+   return this.http.get<Product[]>(this.apiUrlProd+"?categoryId="+id);
   }
 }

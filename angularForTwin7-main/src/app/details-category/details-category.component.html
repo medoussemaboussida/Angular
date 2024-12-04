@@ -1,1 +1,5 @@
-<p>details-category works!</p>
+<ul *ngIf="category">
+    <li>ID: {{ category.id }}</li>
+    <li>Description: {{ category.description }}</li>
+  </ul>
+  <p *ngIf="!category">Loading category details...</p>

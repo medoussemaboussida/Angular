@@ -2,6 +2,7 @@ import { Product } from './../models/product';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../core/service/product.service';
+import { CategroyService } from '../core/service/categroy.service';
 
 @Component({
   selector: 'app-products-category',
@@ -11,7 +12,6 @@ import { ProductService } from '../core/service/product.service';
 export class ProductsCategoryComponent implements OnInit {
   id : number;
   list : Product[]=[];
-  listProducts : Product[]=[];
 /*
   constructor(private ac:ActivatedRoute){
     console.log("je suis le constructor");
@@ -31,12 +31,20 @@ export class ProductsCategoryComponent implements OnInit {
 
 
   //injecter le service categorie sous le nom de cs
-  constructor(private cs:ProductService){}
-  ngOnInit()
-  {
-    //this.categories=this.cs.getListCategories();
-    this.cs.getListProductsFormBackend().subscribe((res)=>this.listProducts=res);
+  constructor(private cs:CategroyService,private ac:ActivatedRoute){}
+  ngOnInit() {
+    this.ac.params.subscribe(res => {
+      const categoryId = Number(res['id']);  // Correctly get the 'id' from the route parameters
+      if (!isNaN(categoryId)) {
+        this.cs.getListProductsFormBackend(categoryId).subscribe((response) => {
+          this.list = response;
+        });
+      } else {
+        console.error('Invalid category ID:', res['id']);
+      }
+    });
   }
+  
 
 
 }
