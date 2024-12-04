@@ -111,6 +111,15 @@
       "categoryId": 1,
       "promotion": "14",
       "id": 7
+    },
+    {
+      "name": "APlaaaa",
+      "description": "eeeeee",
+      "price": "19",
+      "categoryId": "2",
+      "image": "dddd",
+      "promotion": "99",
+      "id": 8
     }
   ],
   "posts": [

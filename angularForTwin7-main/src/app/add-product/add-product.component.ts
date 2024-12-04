@@ -16,6 +16,7 @@ export class AddProductComponent {
    console.log(this.p);
    console.log(myForm);
    //service
-   this.cs.addProduct(this.p).subscribe();
+   this.cs.addProduct(this.p).subscribe(()=>{alert("ajout avec success")}); 
+   this.p=new Product;
   }
 }

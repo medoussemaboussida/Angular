@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Product } from './../models/product';
 import { Category } from '../models/category';
+import { CategroyService } from '../core/service/categroy.service';
 
 @Component({
   selector: 'app-add-product-reactif',
@@ -11,6 +12,8 @@ import { Category } from '../models/category';
 export class AddProductReactifComponent {
 myForm: FormGroup;
 p:Product = new Product();
+//service post
+constructor(private cs:CategroyService){}
 
 ngOnInit(){
 
@@ -30,6 +33,9 @@ save()
 this.p.name=this.myForm.value.name;
 console.log(this.p);
   console.log(this.myForm.value);
+  //service post
+  this.cs.addProduct(this.myForm.value).subscribe(()=>{alert("ajout avec success")}); 
+   this.p=new Product;
 }
 // Custom validator for name
 nameValidator(control: FormControl) {
